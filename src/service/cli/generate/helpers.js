@@ -38,9 +38,20 @@ const writeFile = async (content) => {
   }
 };
 
+const readFile = async (path) => {
+  try {
+    const content = await fs.readFile(path, `utf8`);
+    return content.split(`\n`);
+  } catch (err) {
+    console.error(chalk.red(err));
+    return [];
+  }
+};
+
 module.exports = {
   writeFile,
   getRandomInt,
   shuffle,
-  generateDate
+  generateDate,
+  readFile,
 };
