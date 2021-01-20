@@ -20,3 +20,7 @@ module.exports.HttpCode = {
   FORBIDDEN: 403,
   UNAUTHORIZED: 401,
 };
+
+module.exports.ErrorCodes = {
+  ENOENT: `ENOENT`
+};
