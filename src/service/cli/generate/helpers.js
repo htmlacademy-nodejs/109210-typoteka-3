@@ -1,5 +1,8 @@
 'use strict';
 
+const {MAX_ID_LENGTH} = require(`./constants`);
+const {nanoid} = require(`nanoid`);
+
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
 const {MOCK_FILE_NAME} = require(`../../../constants`);
@@ -48,10 +51,20 @@ const readFile = async (path) => {
   }
 };
 
+const generateComments = (count, comments) => (
+  Array(count).fill({}).map(() => ({
+    id: nanoid(MAX_ID_LENGTH),
+    text: shuffle(comments)
+      .slice(0, getRandomInt(1, 3))
+      .join(` `),
+  }))
+);
+
 module.exports = {
   writeFile,
   getRandomInt,
   shuffle,
   generateDate,
   readFile,
+  generateComments,
 };

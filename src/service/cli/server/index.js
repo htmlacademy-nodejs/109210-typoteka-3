@@ -1,13 +1,10 @@
 'use strict';
 
 const express = require(`express`);
-const router = new express.Router();
-const {DEFAULT_PORT} = require(`../../../constants`);
-const {postsController} = require(`./postsController`);
+const {DEFAULT_PORT, API_PREFIX} = require(`../../../constants`);
+const routes = require(`../../api`);
 
 const app = express();
-
-router.get(`/posts`, postsController);
 
 module.exports = {
   name: `--server`,
@@ -21,6 +18,6 @@ module.exports = {
 
     app.use(express.json());
 
-    app.use(router);
+    app.use(API_PREFIX, routes);
   }
 };
